@@ -17,6 +17,7 @@ import { Route as AppSalesRouteImport } from './routes/_app.sales'
 import { Route as AppMarketingRouteImport } from './routes/_app.marketing'
 import { Route as AppHrRouteImport } from './routes/_app.hr'
 import { Route as AppFeesRouteImport } from './routes/_app.fees'
+import { Route as AppFacultyRouteImport } from './routes/_app.faculty'
 import { Route as AppExamsRouteImport } from './routes/_app.exams'
 import { Route as AppCrmRouteImport } from './routes/_app.crm'
 import { Route as AppAiRouteImport } from './routes/_app.ai'
@@ -24,6 +25,7 @@ import { Route as AppAdmissionRouteImport } from './routes/_app.admission'
 import { Route as AppAcademicRouteImport } from './routes/_app.academic'
 import { Route as AppSalesIndexRouteImport } from './routes/_app.sales.index'
 import { Route as AppHrIndexRouteImport } from './routes/_app.hr.index'
+import { Route as AppFacultyIndexRouteImport } from './routes/_app.faculty.index'
 import { Route as AppAdmissionIndexRouteImport } from './routes/_app.admission.index'
 import { Route as AppAcademicIndexRouteImport } from './routes/_app.academic.index'
 import { Route as AppSalesLeadsRouteImport } from './routes/_app.sales.leads'
@@ -35,6 +37,7 @@ import { Route as AppHrPayrollRouteImport } from './routes/_app.hr.payroll'
 import { Route as AppHrLeaveRouteImport } from './routes/_app.hr.leave'
 import { Route as AppHrEmployeesRouteImport } from './routes/_app.hr.employees'
 import { Route as AppHrAttendanceRouteImport } from './routes/_app.hr.attendance'
+import { Route as AppFacultyPageRouteImport } from './routes/_app.faculty.$page'
 import { Route as AppAdmissionSettingsRouteImport } from './routes/_app.admission.settings'
 import { Route as AppAdmissionScreeningRouteImport } from './routes/_app.admission.screening'
 import { Route as AppAdmissionReportsRouteImport } from './routes/_app.admission.reports'
@@ -88,6 +91,11 @@ const AppFeesRoute = AppFeesRouteImport.update({
   path: '/fees',
   getParentRoute: () => AppRoute,
 } as any)
+const AppFacultyRoute = AppFacultyRouteImport.update({
+  id: '/faculty',
+  path: '/faculty',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppExamsRoute = AppExamsRouteImport.update({
   id: '/exams',
   path: '/exams',
@@ -122,6 +130,11 @@ const AppHrIndexRoute = AppHrIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AppHrRoute,
+} as any)
+const AppFacultyIndexRoute = AppFacultyIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppFacultyRoute,
 } as any)
 const AppAdmissionIndexRoute = AppAdmissionIndexRouteImport.update({
   id: '/',
@@ -177,6 +190,11 @@ const AppHrAttendanceRoute = AppHrAttendanceRouteImport.update({
   id: '/attendance',
   path: '/attendance',
   getParentRoute: () => AppHrRoute,
+} as any)
+const AppFacultyPageRoute = AppFacultyPageRouteImport.update({
+  id: '/$page',
+  path: '/$page',
+  getParentRoute: () => AppFacultyRoute,
 } as any)
 const AppAdmissionSettingsRoute = AppAdmissionSettingsRouteImport.update({
   id: '/settings',
@@ -252,6 +270,7 @@ export interface FileRoutesByFullPath {
   '/ai': typeof AppAiRoute
   '/crm': typeof AppCrmRoute
   '/exams': typeof AppExamsRoute
+  '/faculty': typeof AppFacultyRouteWithChildren
   '/fees': typeof AppFeesRoute
   '/hr': typeof AppHrRouteWithChildren
   '/marketing': typeof AppMarketingRoute
@@ -269,6 +288,7 @@ export interface FileRoutesByFullPath {
   '/admission/reports': typeof AppAdmissionReportsRoute
   '/admission/screening': typeof AppAdmissionScreeningRoute
   '/admission/settings': typeof AppAdmissionSettingsRoute
+  '/faculty/$page': typeof AppFacultyPageRoute
   '/hr/attendance': typeof AppHrAttendanceRoute
   '/hr/employees': typeof AppHrEmployeesRoute
   '/hr/leave': typeof AppHrLeaveRoute
@@ -280,6 +300,7 @@ export interface FileRoutesByFullPath {
   '/sales/leads': typeof AppSalesLeadsRoute
   '/academic/': typeof AppAcademicIndexRoute
   '/admission/': typeof AppAdmissionIndexRoute
+  '/faculty/': typeof AppFacultyIndexRoute
   '/hr/': typeof AppHrIndexRoute
   '/sales/': typeof AppSalesIndexRoute
   '/sales/agents/$id': typeof AppSalesAgentsIdRoute
@@ -305,6 +326,7 @@ export interface FileRoutesByTo {
   '/admission/reports': typeof AppAdmissionReportsRoute
   '/admission/screening': typeof AppAdmissionScreeningRoute
   '/admission/settings': typeof AppAdmissionSettingsRoute
+  '/faculty/$page': typeof AppFacultyPageRoute
   '/hr/attendance': typeof AppHrAttendanceRoute
   '/hr/employees': typeof AppHrEmployeesRoute
   '/hr/leave': typeof AppHrLeaveRoute
@@ -315,6 +337,7 @@ export interface FileRoutesByTo {
   '/sales/leads': typeof AppSalesLeadsRoute
   '/academic': typeof AppAcademicIndexRoute
   '/admission': typeof AppAdmissionIndexRoute
+  '/faculty': typeof AppFacultyIndexRoute
   '/hr': typeof AppHrIndexRoute
   '/sales': typeof AppSalesIndexRoute
   '/sales/agents/$id': typeof AppSalesAgentsIdRoute
@@ -328,6 +351,7 @@ export interface FileRoutesById {
   '/_app/ai': typeof AppAiRoute
   '/_app/crm': typeof AppCrmRoute
   '/_app/exams': typeof AppExamsRoute
+  '/_app/faculty': typeof AppFacultyRouteWithChildren
   '/_app/fees': typeof AppFeesRoute
   '/_app/hr': typeof AppHrRouteWithChildren
   '/_app/marketing': typeof AppMarketingRoute
@@ -346,6 +370,7 @@ export interface FileRoutesById {
   '/_app/admission/reports': typeof AppAdmissionReportsRoute
   '/_app/admission/screening': typeof AppAdmissionScreeningRoute
   '/_app/admission/settings': typeof AppAdmissionSettingsRoute
+  '/_app/faculty/$page': typeof AppFacultyPageRoute
   '/_app/hr/attendance': typeof AppHrAttendanceRoute
   '/_app/hr/employees': typeof AppHrEmployeesRoute
   '/_app/hr/leave': typeof AppHrLeaveRoute
@@ -357,6 +382,7 @@ export interface FileRoutesById {
   '/_app/sales/leads': typeof AppSalesLeadsRoute
   '/_app/academic/': typeof AppAcademicIndexRoute
   '/_app/admission/': typeof AppAdmissionIndexRoute
+  '/_app/faculty/': typeof AppFacultyIndexRoute
   '/_app/hr/': typeof AppHrIndexRoute
   '/_app/sales/': typeof AppSalesIndexRoute
   '/_app/sales/agents/$id': typeof AppSalesAgentsIdRoute
@@ -371,6 +397,7 @@ export interface FileRouteTypes {
     | '/ai'
     | '/crm'
     | '/exams'
+    | '/faculty'
     | '/fees'
     | '/hr'
     | '/marketing'
@@ -388,6 +415,7 @@ export interface FileRouteTypes {
     | '/admission/reports'
     | '/admission/screening'
     | '/admission/settings'
+    | '/faculty/$page'
     | '/hr/attendance'
     | '/hr/employees'
     | '/hr/leave'
@@ -399,6 +427,7 @@ export interface FileRouteTypes {
     | '/sales/leads'
     | '/academic/'
     | '/admission/'
+    | '/faculty/'
     | '/hr/'
     | '/sales/'
     | '/sales/agents/$id'
@@ -424,6 +453,7 @@ export interface FileRouteTypes {
     | '/admission/reports'
     | '/admission/screening'
     | '/admission/settings'
+    | '/faculty/$page'
     | '/hr/attendance'
     | '/hr/employees'
     | '/hr/leave'
@@ -434,6 +464,7 @@ export interface FileRouteTypes {
     | '/sales/leads'
     | '/academic'
     | '/admission'
+    | '/faculty'
     | '/hr'
     | '/sales'
     | '/sales/agents/$id'
@@ -446,6 +477,7 @@ export interface FileRouteTypes {
     | '/_app/ai'
     | '/_app/crm'
     | '/_app/exams'
+    | '/_app/faculty'
     | '/_app/fees'
     | '/_app/hr'
     | '/_app/marketing'
@@ -464,6 +496,7 @@ export interface FileRouteTypes {
     | '/_app/admission/reports'
     | '/_app/admission/screening'
     | '/_app/admission/settings'
+    | '/_app/faculty/$page'
     | '/_app/hr/attendance'
     | '/_app/hr/employees'
     | '/_app/hr/leave'
@@ -475,6 +508,7 @@ export interface FileRouteTypes {
     | '/_app/sales/leads'
     | '/_app/academic/'
     | '/_app/admission/'
+    | '/_app/faculty/'
     | '/_app/hr/'
     | '/_app/sales/'
     | '/_app/sales/agents/$id'
@@ -543,6 +577,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppFeesRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/faculty': {
+      id: '/_app/faculty'
+      path: '/faculty'
+      fullPath: '/faculty'
+      preLoaderRoute: typeof AppFacultyRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/exams': {
       id: '/_app/exams'
       path: '/exams'
@@ -591,6 +632,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/hr/'
       preLoaderRoute: typeof AppHrIndexRouteImport
       parentRoute: typeof AppHrRoute
+    }
+    '/_app/faculty/': {
+      id: '/_app/faculty/'
+      path: '/'
+      fullPath: '/faculty/'
+      preLoaderRoute: typeof AppFacultyIndexRouteImport
+      parentRoute: typeof AppFacultyRoute
     }
     '/_app/admission/': {
       id: '/_app/admission/'
@@ -668,6 +716,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/hr/attendance'
       preLoaderRoute: typeof AppHrAttendanceRouteImport
       parentRoute: typeof AppHrRoute
+    }
+    '/_app/faculty/$page': {
+      id: '/_app/faculty/$page'
+      path: '/$page'
+      fullPath: '/faculty/$page'
+      preLoaderRoute: typeof AppFacultyPageRouteImport
+      parentRoute: typeof AppFacultyRoute
     }
     '/_app/admission/settings': {
       id: '/_app/admission/settings'
@@ -809,6 +864,20 @@ const AppAdmissionRouteWithChildren = AppAdmissionRoute._addFileChildren(
   AppAdmissionRouteChildren,
 )
 
+interface AppFacultyRouteChildren {
+  AppFacultyPageRoute: typeof AppFacultyPageRoute
+  AppFacultyIndexRoute: typeof AppFacultyIndexRoute
+}
+
+const AppFacultyRouteChildren: AppFacultyRouteChildren = {
+  AppFacultyPageRoute: AppFacultyPageRoute,
+  AppFacultyIndexRoute: AppFacultyIndexRoute,
+}
+
+const AppFacultyRouteWithChildren = AppFacultyRoute._addFileChildren(
+  AppFacultyRouteChildren,
+)
+
 interface AppHrRouteChildren {
   AppHrAttendanceRoute: typeof AppHrAttendanceRoute
   AppHrEmployeesRoute: typeof AppHrEmployeesRoute
@@ -869,6 +938,7 @@ interface AppRouteChildren {
   AppAiRoute: typeof AppAiRoute
   AppCrmRoute: typeof AppCrmRoute
   AppExamsRoute: typeof AppExamsRoute
+  AppFacultyRoute: typeof AppFacultyRouteWithChildren
   AppFeesRoute: typeof AppFeesRoute
   AppHrRoute: typeof AppHrRouteWithChildren
   AppMarketingRoute: typeof AppMarketingRoute
@@ -884,6 +954,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppAiRoute: AppAiRoute,
   AppCrmRoute: AppCrmRoute,
   AppExamsRoute: AppExamsRoute,
+  AppFacultyRoute: AppFacultyRouteWithChildren,
   AppFeesRoute: AppFeesRoute,
   AppHrRoute: AppHrRouteWithChildren,
   AppMarketingRoute: AppMarketingRoute,
