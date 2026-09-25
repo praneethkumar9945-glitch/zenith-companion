@@ -17,6 +17,7 @@ import {
   Megaphone,
   LayoutGrid,
   TrendingUp,
+  Landmark,
 } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -63,6 +64,7 @@ const NAV: Item[] = [
   },
   { to: "/marketing", label: "Marketing", icon: Megaphone, badge: "New" },
   { to: "/workspace", label: "Workspace", icon: LayoutGrid },
+  { to: "/faculty", label: "Faculty Portal", icon: Landmark, badge: "New" },
   { to: "/hr", label: "HR", icon: Briefcase },
   { to: "/ai", label: "AI Analytics", icon: Sparkles, badge: "New" },
 ];

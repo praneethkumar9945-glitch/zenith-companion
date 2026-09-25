@@ -61,7 +61,8 @@ function Shell() {
             return (
               <Link
                 key={item.page || "overview"}
-                to={to}
+                to={item.page ? "/faculty/$page" : "/faculty"}
+                params={item.page ? { page: item.page } : undefined}
                 className={cn(
                   "flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium transition-colors",
                   active ? "bg-primary/10 text-primary" : "text-foreground/75 hover:bg-accent hover:text-foreground",
@@ -105,7 +106,7 @@ function Shell() {
         </header>
         <div className="md:hidden flex gap-1 overflow-x-auto px-3 py-2 bg-card border-b border-border">
           {items.map((item) => (
-            <Link key={item.page || "o"} to={item.page ? `/faculty/${item.page}` : "/faculty"} className="shrink-0 rounded-md px-3 py-1.5 text-xs font-medium bg-muted">
+            <Link key={item.page || "o"} to={item.page ? "/faculty/$page" : "/faculty"} params={item.page ? { page: item.page } : undefined} className="shrink-0 rounded-md px-3 py-1.5 text-xs font-medium bg-muted">
               {item.label}
             </Link>
           ))}
